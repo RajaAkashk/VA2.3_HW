@@ -55,8 +55,67 @@
   <button id="petBtn">Display Pet Description.</button>
   <p id="petResult"></p>
 
+
+  <h1>Product Order Form</h1>
+
+  <form id="productForm">
+    <label for="selectProduct">Product Name:</label>
+    <select id="selectProduct">
+      <option value="Product 1">Product 1</option>
+      <option value="Product 2">Product 2</option>
+      <option value="Product 3">Product 3</option>
+    </select>
+    <br><br>
+    <label for="quantity">Quantity:</label>
+    <input type="number" value="1" id="quantity" />
+    <br><br>
+    <label>Shipping Adddress:</label><br>
+    <textarea id="address" rows="5" cols="45"></textarea>
+    <br><br>
+    <label>Payment Method:</label><br>
+    <input type="radio" name="paymentMethod" value="Credit Card" />Credit Card <br>
+    <input type="radio" name="paymentMethod" value="PayPal" />PayPal <br>
+    <input type="radio" name="paymentMethod" value="Bank Transfer" />Bank Transfer <br>
+    <br>
+    <label>Delivery Speed:</label>
+    <select id="delivery">
+      <option value="Standard">Standard</option>
+      <option value="Express">Express</option>
+      <option value="Same Day">Same Day</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Place Order">
+  </form>
+
+  <div id="output"></div>
+
+  
   <script>
 
+const productForm = document.getElementById('productForm')
+
+    productForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const productName = document.getElementById("selectProduct").value;
+      const quantity = document.getElementById('quantity').value
+      const address = document.getElementById('address').value
+      const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+      const deliveryMethod = document.getElementById('delivery').value
+
+
+      const output = document.getElementById('output')
+      output.innerHTML = `<h2>Your Order:</h2>
+      <p>Product Name: ${productName}</p>
+        <p>Quantity: ${quantity}</p>
+        <p>Shipping Address: ${address}</p>
+        <p>Payment Method: ${paymentMethod}</p>
+        <p>Delivery Method: ${deliveryMethod}</p>
+      `
+
+    })
+
+  
     const selectMovie = document.getElementById('selectMovie')
     const MovieResult = document.getElementById('MovieResult')
 
